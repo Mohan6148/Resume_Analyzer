@@ -26,5 +26,3 @@ It identifies skill gaps between a candidate’s resume and the requirements of 
   - `python-docx` (for DOCX reading)  
 
 ---
-
-## 📂 Project Structure
