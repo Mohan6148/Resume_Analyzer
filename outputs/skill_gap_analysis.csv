@@ -1,0 +1,24 @@
+jd_skill,resume_match,similarity,match_status
+python,python,1.0,match
+tensorflow,python,0.4306146800518036,gap
+computer science,java,0.48983034491539,gap
+machine learning,problem solving,0.37425559759140015,gap
+javascript,javascript,0.9999998807907104,match
+angular,angular,1.0,match
+aws,aws,1.0000001192092896,match
+kubernetes,kubernetes,1.0000003576278687,match
+mysql,mysql,0.9999999403953552,match
+postgresql,postgresql,1.0,match
+express,express,1.0,match
+pytorch,python,0.4303700625896454,gap
+ci,node.js - implemented ci,0.5381678342819214,gap
+adaptability,communication,0.26116156578063965,gap
+express.js - database,express.js,0.7442208528518677,match
+node.js,node.js,1.0000001192092896,match
+communication,communication,0.9999998807907104,match
+mongodb,mongodb,1.0,match
+software,doe software,0.7163848876953125,match
+azure,azure,1.0000001192092896,match
+leadership,leadership,0.9999998211860657,match
+react,react,1.0000001192092896,match
+docker,docker,1.0,match

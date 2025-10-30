@@ -1,0 +1,41 @@
+JOHN DOE
+Software Engineer
+Email: john.doe@email.com | Phone: +1-234-567-8900
+
+PROFESSIONAL SUMMARY
+Experienced software engineer with 5+ years of expertise in full-stack development, specializing in Python, JavaScript, and cloud technologies. Proven track record of delivering scalable web applications and data-driven solutions.
+
+TECHNICAL SKILLS
+Programming Languages: Python, JavaScript, Java, C++
+Web Technologies: HTML, CSS, React, Angular, Node.js, Express.js
+Databases: SQL, MySQL, PostgreSQL, MongoDB
+Cloud Platforms: AWS, Azure
+Tools & Frameworks: Docker, Git, Jenkins, RESTful APIs
+Soft Skills: Leadership, Teamwork, Problem Solving, Communication
+
+WORK EXPERIENCE
+
+Senior Software Engineer | TechCorp Inc. | 2020 - Present
+- Developed and maintained web applications using React and Node.js
+- Implemented CI/CD pipelines reducing deployment time by 40%
+- Collaborated with cross-functional teams to deliver high-quality software
+- Utilized AWS services for scalable cloud infrastructure
+
+Software Engineer | StartupXYZ | 2018 - 2020
+- Built RESTful APIs using Python and Django
+- Optimized database queries improving performance by 35%
+- Led a team of 3 junior developers on multiple projects
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology | 2014 - 2018
+
+CERTIFICATIONS
+- AWS Certified Solutions Architect
+- Certified Kubernetes Administrator
+
+PROJECTS
+- E-commerce Platform: Built full-stack application using React and Django
+- Data Analytics Dashboard: Created visualization tool using Python and Plotly
+- Microservices Architecture: Implemented Docker containerization for scalable system
+

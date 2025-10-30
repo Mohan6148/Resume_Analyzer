@@ -1,0 +1,43 @@
+SOFTWARE ENGINEER - FULL STACK
+Tech Innovations Inc.
+
+Job Description:
+
+We are seeking a talented Software Engineer to join our dynamic team. The ideal candidate will have experience in modern web development technologies and cloud platforms.
+
+Key Responsibilities:
+- Design and develop scalable web applications
+- Implement RESTful APIs and microservices architecture
+- Work with cross-functional teams to deliver high-quality software solutions
+- Maintain and optimize existing applications for performance
+- Participate in code reviews and Agile development processes
+
+Required Skills:
+- Strong proficiency in Python and JavaScript
+- Experience with React or Angular frameworks
+- Knowledge of Node.js and Express.js
+- Database design and optimization (MySQL, PostgreSQL, MongoDB)
+- Experience with AWS or Azure cloud platforms
+- Familiarity with Docker and containerization
+- Understanding of CI/CD practices and tools
+- Git version control
+
+Preferred Qualifications:
+- Master's degree in Computer Science or related field
+- Experience with machine learning frameworks (TensorFlow, PyTorch)
+- Knowledge of Kubernetes orchestration
+- AWS certifications
+
+Soft Skills:
+- Excellent communication and collaboration skills
+- Strong problem-solving abilities
+- Leadership and mentorship experience
+- Adaptability in fast-paced environments
+
+Benefits:
+- Competitive salary and stock options
+- Health insurance
+- Flexible working hours
+- Professional development opportunities
+- Modern office environment
+
