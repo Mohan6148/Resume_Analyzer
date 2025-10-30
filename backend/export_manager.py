@@ -2,7 +2,10 @@
 Export Manager - Handles PDF and CSV export of analysis reports
 """
 
-import pandas as pd
+try:
+    import pandas as pd
+except Exception:
+    pd = None
 from typing import Dict, List
 from datetime import datetime
 import sys

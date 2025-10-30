@@ -3,12 +3,42 @@ Skill Gap Analysis & Similarity Matching
 Uses S-BERT embeddings and cosine similarity to identify skill gaps
 """
 
-import numpy as np
-import pandas as pd
+try:
+    import numpy as np
+except Exception:
+    np = None
+
+try:
+    import pandas as pd
+except Exception:
+    pd = None
+
 from typing import Dict, List, Tuple
-import streamlit as st
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
+
+try:
+    import streamlit as st
+except Exception:
+    class _StFallback:
+        def error(self, msg):
+            print("[STREAMLIT ERROR]", msg)
+        def warning(self, msg):
+            print("[STREAMLIT WARNING]", msg)
+        def info(self, msg):
+            print("[STREAMLIT INFO]", msg)
+        def success(self, msg):
+            print("[STREAMLIT SUCCESS]", msg)
+
+    st = _StFallback()
+
+try:
+    from sentence_transformers import SentenceTransformer
+except Exception:
+    SentenceTransformer = None
+
+try:
+    from sklearn.metrics.pairwise import cosine_similarity
+except Exception:
+    cosine_similarity = None
 import sys
 from pathlib import Path
 
@@ -47,44 +77,42 @@ class SkillGapAnalyzer:
         Returns:
             Dictionary with gap analysis results
         """
+        # Deduplicate and normalize input skills first
+        resume_skills_clean = list(set([s.lower().strip() for s in resume_skills if s]))
+        jd_skills_clean = list(set([s.lower().strip() for s in jd_skills if s]))
+
         # If Sentence-BERT model not available, fall back to TF-IDF cosine similarity
+        similarity_matrix = None
         if not self.model:
             try:
                 from sklearn.feature_extraction.text import TfidfVectorizer
                 from sklearn.metrics.pairwise import cosine_similarity as _cos_sim
-                # Use the skill strings themselves as the corpus
-                resume_skills_joined = [s for s in resume_skills_clean]
-                jd_skills_joined = [s for s in jd_skills_clean]
 
-                if not resume_skills_joined or not jd_skills_joined:
+                if not resume_skills_clean or not jd_skills_clean:
                     return {'error': 'No skills found'}
 
-                vectorizer = TfidfVectorizer().fit_transform(resume_skills_joined + jd_skills_joined)
-                resume_vecs = vectorizer[: len(resume_skills_joined) ]
-                jd_vecs = vectorizer[ len(resume_skills_joined): ]
+                # Vectorize the skill strings (each skill is a document)
+                vectorizer = TfidfVectorizer().fit_transform(resume_skills_clean + jd_skills_clean)
+                resume_vecs = vectorizer[: len(resume_skills_clean) ]
+                jd_vecs = vectorizer[ len(resume_skills_clean): ]
 
                 similarity_matrix = _cos_sim(jd_vecs, resume_vecs)
             except Exception as e:
                 st.error(f"Fallback TF-IDF similarity failed: {str(e)}")
                 return {}
         
-        # Deduplicate and normalize
-        resume_skills_clean = list(set([s.lower().strip() for s in resume_skills]))
-        jd_skills_clean = list(set([s.lower().strip() for s in jd_skills]))
-        
         if not resume_skills_clean or not jd_skills_clean:
             return {'error': 'No skills found'}
         
-        # Get embeddings
-        try:
-            resume_embeddings = self.model.encode(resume_skills_clean, show_progress_bar=False)
-            jd_embeddings = self.model.encode(jd_skills_clean, show_progress_bar=False)
-        except Exception as e:
-            st.error(f"Encoding error: {str(e)}")
-            return {}
-        
-        # Compute similarity matrix
-        similarity_matrix = cosine_similarity(jd_embeddings, resume_embeddings)
+        # If we have a model, get embeddings and compute similarity matrix
+        if self.model and similarity_matrix is None:
+            try:
+                resume_embeddings = self.model.encode(resume_skills_clean, show_progress_bar=False)
+                jd_embeddings = self.model.encode(jd_skills_clean, show_progress_bar=False)
+                similarity_matrix = cosine_similarity(jd_embeddings, resume_embeddings)
+            except Exception as e:
+                st.error(f"Encoding error: {str(e)}")
+                return {}
         
         # Find best matches for each JD skill
         matches = []
@@ -182,5 +210,6 @@ class SkillGapAnalyzer:
                 return category
         
         return 'Other'
+
 
 

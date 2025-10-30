@@ -3,12 +3,28 @@ Skill Extraction using NLP
 Uses spaCy + custom NER to extract technical and soft skills
 """
 
-import spacy
+try:
+    import spacy
+except Exception:
+    spacy = None
+
 import re
 from typing import Dict, List, Tuple
-import streamlit as st
+
+try:
+    import streamlit as st
+except Exception:
+    class _StFallback:
+        def warning(self, msg):
+            print("[STREAMLIT WARNING]", msg)
+    st = _StFallback()
+
 from collections import Counter
-import pandas as pd
+
+try:
+    import pandas as pd
+except Exception:
+    pd = None
 
 # Import configuration
 import sys

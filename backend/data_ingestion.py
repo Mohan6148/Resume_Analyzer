@@ -3,8 +3,26 @@ Data Ingestion & Parsing
 Handles file uploads, text extraction, cleaning, and normalization
 """
 
-import streamlit as st
-import pandas as pd
+try:
+    import streamlit as st
+except Exception:
+    # Minimal fallback when running outside Streamlit / for editor checks
+    class _StFallback:
+        def error(self, msg):
+            print("[STREAMLIT ERROR]", msg)
+        def warning(self, msg):
+            print("[STREAMLIT WARNING]", msg)
+        def info(self, msg):
+            print("[STREAMLIT INFO]", msg)
+        def success(self, msg):
+            print("[STREAMLIT SUCCESS]", msg)
+
+    st = _StFallback()
+
+try:
+    import pandas as pd
+except Exception:
+    pd = None
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 import io
@@ -119,7 +137,12 @@ class DataIngestion:
             pdf_file.seek(0)
             pdf_reader = PyPDF2.PdfReader(pdf_file)
             for page in pdf_reader.pages:
-                raw_text += page.extract_text() + "\n\n"
+                try:
+                    page_text = page.extract_text()
+                except Exception:
+                    page_text = None
+                if page_text:
+                    raw_text += page_text + "\n\n"
             
             # If extracted text is minimal, try OCR
             if len(raw_text.strip()) < 100:

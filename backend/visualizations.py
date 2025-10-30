@@ -3,12 +3,36 @@ Visualization & Dashboard
 Creates all visualizations for the analysis results
 """
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.graph_objects as go
-import plotly.express as px
+try:
+    import streamlit as st
+except Exception:
+    class _StFallback:
+        pass
+    st = _StFallback()
+
+try:
+    import pandas as pd
+except Exception:
+    pd = None
+
+try:
+    import numpy as np
+except Exception:
+    np = None
+
+try:
+    import plotly.graph_objects as go
+    import plotly.express as px
+except Exception:
+    go = None
+    px = None
 from typing import Dict, List
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    # For type hints only (avoid runtime import errors)
+    import pandas as pd
+    import plotly.graph_objects as _go
 import sys
 from pathlib import Path
 
@@ -22,7 +46,7 @@ class Visualizer:
     def __init__(self):
         pass
     
-    def create_skill_tag_cloud(self, skills_data: Dict) -> go.Figure:
+    def create_skill_tag_cloud(self, skills_data: Dict) -> 'go.Figure':
         """Create a tag cloud visualization of top skills"""
         skill_counts = skills_data.get('skill_counts', {})
         
@@ -49,7 +73,7 @@ class Visualizer:
         
         return fig
     
-    def create_radar_chart(self, category_stats: Dict) -> go.Figure:
+    def create_radar_chart(self, category_stats: Dict) -> 'go.Figure':
         """Create radar chart comparing categories"""
         if not category_stats:
             return None
@@ -87,7 +111,7 @@ class Visualizer:
         
         return fig
     
-    def create_similarity_heatmap(self, gap_analysis: Dict) -> go.Figure:
+    def create_similarity_heatmap(self, gap_analysis: Dict) -> 'go.Figure':
         """Create heatmap showing similarity matrix"""
         if 'similarity_matrix' not in gap_analysis:
             return None
@@ -127,7 +151,7 @@ class Visualizer:
         
         return fig
     
-    def create_gap_bar_chart(self, gap_analysis: Dict) -> go.Figure:
+    def create_gap_bar_chart(self, gap_analysis: Dict) -> 'go.Figure':
         """Create bar chart of top skill gaps"""
         gaps = gap_analysis.get('gaps', [])
         
@@ -179,7 +203,7 @@ class Visualizer:
             'high_priority': len(high_priority_gaps)
         }
     
-    def create_category_comparison_chart(self, category_stats: Dict) -> go.Figure:
+    def create_category_comparison_chart(self, category_stats: Dict) -> 'go.Figure':
         """Create bar chart comparing match percentage across categories"""
         if not category_stats:
             return None
@@ -214,7 +238,7 @@ class Visualizer:
         
         return fig
     
-    def create_skill_frequency_chart(self, skills_df: pd.DataFrame) -> go.Figure:
+    def create_skill_frequency_chart(self, skills_df: 'pd.DataFrame') -> 'go.Figure':
         """Create bar chart of skill frequencies"""
         if skills_df.empty:
             return None

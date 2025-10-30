@@ -1,20 +1,34 @@
-## SkillGapAI — Quick Project Outline
+Resume_Analyzer
+🧠 SkillGapAI – Analyzing Resume and Job Post for Skill Gap
 
-SkillGapAI analyzes a resume against a job description and identifies skill matches and gaps.
+📌 Overview
+SkillGapAI is an AI-powered system designed to identify and analyze skill gaps between a candidate’s resume and a job description.
+The application extracts, compares, and visualizes technical and soft skills, enabling both recruiters and job seekers to understand where upskilling is needed.
 
-1. Upload resume + job description (PDF/DOCX/TXT)
-2. Extract skills (pattern matching + spaCy NER if available)
-3. Encode skills and compute similarity (SBERT or TF-IDF fallback)
-4. Identify and rank gaps
-5. Visualize results and export CSV/PDF reports
+🎯 Objectives
+Automate skill extraction from resumes and job descriptions using Natural Language Processing (NLP).
+Identify missing, matched, and unique skills efficiently.
+Provide visual insights into the skill gap through interactive dashboards.
+Allow easy export of analytical reports (CSV / PDF formats).
 
-Quick start
-```bash
-pip install -r requirements.txt
-python -m spacy download en_core_web_sm  # optional but recommended
-streamlit run app.py
-```
+⚙️ Features
+✅ Resume and Job Description text extraction (PDF / DOCX / TXT)
+✅ Skill extraction using spaCy and Sentence Transformers
+✅ Skill gap analysis using semantic similarity
+✅ Visualization with Plotly charts and Streamlit UI
+✅ Export results to CSV and PDF
+✅ Clean and modern interface with custom CSS design
 
-Sample files are in `sample_data/`.
+🚀 How to Run
+Clone the repository
 
-Built with Python and Streamlit.
+git clone https://github.com/Mohan6148/Resume_Analyzer
+cd Resume_Analyzer
+Install dependencies pip install -r requirements.txt
+
+Run the Streamlit app streamlit run main.py
+
+4.Upload resume and job description files, then view analysis results on the dashboard
+
+📄 License This project is open-source under the MIT License.
+
