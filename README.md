@@ -19,21 +19,6 @@ The application extracts, compares, and visualizes technical and soft skills, en
 ✅ Export results to **CSV** and **PDF**  
 ✅ Clean and modern interface with **custom CSS design**
 
-SkillGapAI/
-│
-├── backend/
-│ ├── data_ingestion.py
-│ ├── skill_extraction.py
-│ ├── gap_analysis.py
-│ ├── visualizations.py
-│ ├── export_manager.py
-│ └── init.py
-│
-├── config.py
-├── main.py
-├── requirements.txt
-└── README.md
-
 ## 🚀 How to Run
 
 1. **Clone the repository**
